@@ -20,8 +20,8 @@ endif
 setenv CONDA_ENVS_PATH /speed-scratch/$USER/conda
 setenv CONDA_PKGS_DIRS /speed-scratch/$USER/conda/pkg
 
-module load anaconda3 /2023.03/ default
-module load cuda /11.8/ default
+module load anaconda3
+module load cuda/11.8
 
 setenv TMPDIR /speed-scratch/$USER/tmp
 setenv TMP /speed-scratch/$USER/tmp
