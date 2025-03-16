@@ -12,7 +12,14 @@
 echo "$0 : about to run a gaussian splatting job on Speed"
 date
 
-time srun git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive
+module load anaconda3 /2023.03/ default
+module load cuda /11.8/ default
 
+time srun git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive
+cd gaussian-splatting
+
+time srun conda env create --file environment.yml
+time srun conda activate gaussian_splatting
+time srun conda deactivate
 
 # EOF
