@@ -1,12 +1,14 @@
 #!/encs/bin/tcsh
 
-#SBATCH --job-name=gaussian_splatting        ## Give the job a name
-#SBATCH --mail-type=ALL        ## Receive all email type notifications
-#SBATCH --chdir=./             ## Use currect directory as working directory
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1      ## Request 1 cpus
-#SBATCH --mem=1G               ## Assign 1G memory per node
+#SBATCH -J "Gaussian Splatting"   # job name
+#SBATCH --nodes=1   # number of nodes
+#SBATCH --ntasks-per-node=1   # number of tasks per node
+#SBATCH --cpus-per-task=1   # number of CPU cores per task
+#SBATCH --gpus=1   # gpu devices per node
+#SBATCH --partition=pg   # partition
+#SBATCH --mem=8G   # memory
+#SBATCH --mail-type=ALL
+#SBATCH --time=7-00:00:00   # job time limit
 
 # timestamp
 echo "$0 : about to run a gaussian splatting job on Speed"
@@ -15,8 +17,16 @@ date
 module load anaconda3 /2023.03/ default
 module load cuda /11.8/ default
 
-time srun git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive
+setenv TMPDIR /speed-scratch/$USER/tmp
+setenv TMP /speed-scratch/$USER/tmp
+
+if ( ! -d gaussian-splatting ) then
+  time srun git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive
+endif
+
 cd gaussian-splatting
+
+time srun conda init tcsh
 
 time srun conda env create --file environment.yml
 time srun conda activate gaussian_splatting
