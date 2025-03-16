@@ -13,6 +13,12 @@
 # timestamp
 echo "$0 : about to run a gaussian splatting job on Speed"
 date
+if ( ! -d /speed-scratch/$USER/conda ) then
+  mkdir -p /speed-scratch/$USER/conda
+endif
+
+setenv CONDA_ENVS_PATH /speed-scratch/$USER/conda
+setenv CONDA_PKGS_DIRS /speed-scratch/$USER/conda/pkg
 
 module load anaconda3 /2023.03/ default
 module load cuda /11.8/ default
