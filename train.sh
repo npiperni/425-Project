@@ -17,7 +17,11 @@ $SINGULARITY run --nv 3d_gaussian_splatting.sif
 
 cd gaussian-splatting/
 
-pip install /root/submodules/diff-gaussian-rasterization
+echo "$0 : Install submodules..."
+
+pip install submodules/diff-gaussian-rasterization
+
+echo "$0 : Training..."
 
 python train.py -s /speed-scratch/$USER/dataset/db/playroom/
 
