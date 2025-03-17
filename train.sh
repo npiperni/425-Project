@@ -14,9 +14,9 @@ date
 SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
 
 $SINGULARITY run --nv \
---bind /speed-scratch/n_piper/425-project/gaussian-splatting:/mnt/code \
+--bind /speed-scratch/n_piper/425-Project/gaussian-splatting:/mnt/code \
 --bind /speed-scratch/n_piper/dataset:/mnt/data \
-/speed-scratch/n_piper/425-project/3d_gaussian_splatting.sif \
+/speed-scratch/n_piper/425-Project/3d_gaussian_splatting.sif \
 python /mnt/code/train.py -s /mnt/data/db/playroom/
 
 
