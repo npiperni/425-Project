@@ -17,6 +17,8 @@ module load anaconda3
 module load cuda/11.8
 module load singularity
 
+which singularity
+
 setenv SINGULARITY_CACHEDIR /speed-scratch/$USER/singularity_cache
 setenv SINGULARITY_TMPDIR /speed-scratch/$USER/singularity_tmp
 mkdir -p $SINGULARITY_CACHEDIR $SINGULARITY_TMPDIR
