@@ -12,7 +12,7 @@ echo "$0 : Starting Gaussian Splatting job on Speed..."
 date
 
 # Load necessary modules
-module load singularity
+SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
 
 # Set Singularity environment variables for caching
 export SINGULARITY_CACHEDIR=/speed-scratch/$USER/singularity_cache
@@ -25,7 +25,7 @@ CONTAINER_PATH="/speed-scratch/$USER/3d_gaussian_splatting.sif"
 # Check if the container already exists, if not, pull and convert it
 if [ ! -f "$CONTAINER_PATH" ]; then
     echo "Pulling container from Docker Hub..."
-    singularity pull --disable-cache "$CONTAINER_PATH" docker://gaetanlandreau/3d-gaussian-splatting
+    $SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://gaetanlandreau/3d-gaussian-splatting
 else
     echo "Container already exists at $CONTAINER_PATH. Skipping download."
 fi
@@ -43,7 +43,7 @@ echo "Singularity will bind mount: $SINGULARITY_BIND for user: $USER"
 
 # Run the container with GPU support
 time \
-srun singularity run --nv --bind $SINGULARITY_BIND "$CONTAINER_PATH" \
+srun $SINGULARITY run --nv --bind $SINGULARITY_BIND "$CONTAINER_PATH" \
     /usr/bin/python3 -c 'import torch; print(torch.rand(5, 5).cuda()); print("3D Gaussian Splatting Container Running!")'
 
 echo "$0 : Gaussian Splatting job completed!"
