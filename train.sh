@@ -5,7 +5,6 @@
 #SBATCH --chdir=./                           ## Use current directory as working directory
 #SBATCH --partition=ps                       ## Use the ps partition (for A100 or V100 GPUs)
 #SBATCH --gpus=1                             ## Request 1 GPU
-#SBATCH --gres=gpu:nvidia_a100_7g.80gb:1     ## Request an A100 GPU with 80 GB of VRAM (if available)
 #SBATCH --mem=24G                            ## Assign memory to CPU (this is for system memory)
 #SBATCH --export=ALL                         ## Export all environment variables
 
