@@ -17,11 +17,14 @@ module load anaconda3
 module load cuda/11.8
 module load singularity
 
-time srun which singularity
+SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
+
+
+time srun which SINGULARITY
 
 setenv SINGULARITY_CACHEDIR /speed-scratch/$USER/singularity_cache
 setenv SINGULARITY_TMPDIR /speed-scratch/$USER/singularity_tmp
 mkdir -p $SINGULARITY_CACHEDIR $SINGULARITY_TMPDIR
 
-time srun singularity pull --disable-cache /scratch-speed/$USER/3d_gaussian_splatting.sif docker://gaetanlandreau/3d-gaussian-splatting
+time srun SINGULARITY pull --disable-cache /scratch-speed/$USER/3d_gaussian_splatting.sif docker://gaetanlandreau/3d-gaussian-splatting
 ls -lh /speed-scratch/$USER/
