@@ -14,7 +14,7 @@ echo "$0 : about to run a gaussian splatting job on Speed"
 date
 
 module load anaconda3
-modula load cuda/11.8
+module load cuda/11.8
 module load singularity
 
 setenv SINGULARITY_CACHEDIR /speed-scratch/$USER/singularity_cache
