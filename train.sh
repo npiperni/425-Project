@@ -1,12 +1,14 @@
 #!/encs/bin/bash
 
 #SBATCH --job-name=gaussian_splatting_train   ## Job name
-#SBATCH --mail-type=ALL                 ## Receive all email notifications
-#SBATCH --chdir=./                      ## Use current directory as working directory
-#SBATCH --partition=pg                   ## Use GPU partition
-#SBATCH --gpus=1                         ## Request 1 GPU
-#SBATCH --mem=24G                        ## Assign memory
-#SBATCH --export=ALL                     ## Export all environment variables
+#SBATCH --mail-type=ALL                      ## Receive all email notifications
+#SBATCH --chdir=./                           ## Use current directory as working directory
+#SBATCH --partition=ps                       ## Use the ps partition (for A100 or V100 GPUs)
+#SBATCH --gpus=1                             ## Request 1 GPU
+#SBATCH --gres=gpu:nvidia_a100_7g.80gb:1     ## Request an A100 GPU with 80 GB of VRAM (if available)
+#SBATCH --mem=24G                            ## Assign memory to CPU (this is for system memory)
+#SBATCH --export=ALL                         ## Export all environment variables
+
 
 echo "$0 : Starting Gaussian Splatting job on Speed..."
 date
