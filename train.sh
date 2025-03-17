@@ -15,7 +15,7 @@ SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
 
 $SINGULARITY run --nv 3d_gaussian_splatting.sif
 
-cd 425-project/gaussian-splatting/
+cd gaussian-splatting/
 
 python train.py -s /speed-scratch/$USER/dataset/db/playroom/
 
