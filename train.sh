@@ -13,17 +13,12 @@ date
 
 SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
 
-$SINGULARITY run --nv 3d_gaussian_splatting.sif
+$SINGULARITY run --nv \
+--bind /speed-scratch/n_piper/425-project/gaussian-splatting:/mnt/code \
+--bind /speed-scratch/n_piper/dataset:/mnt/data \
+/speed-scratch/n_piper/425-project/3d_gaussian_splatting.sif \
+python /mnt/code/train.py -s /mnt/data/db/playroom/
 
-cd gaussian-splatting/
-
-echo "$0 : Install submodules..."
-
-pip install submodules/diff-gaussian-rasterization
-
-echo "$0 : Training..."
-
-python train.py -s /speed-scratch/$USER/dataset/db/playroom/
 
 echo "$0 : Done"
 date
