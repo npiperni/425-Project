@@ -34,7 +34,8 @@ CONTAINER_PATH="/speed-scratch/$USER/3d_gaussian_splatting.sif"
 # Check if the container already exists, if not, pull and convert it
 if [ ! -f "$CONTAINER_PATH" ]; then
     echo "Pulling container from Docker Hub..."
-    $SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://j3soon/gaussian_splatting
+    #$SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://j3soon/gaussian_splatting
+    $SINGULARITY pull "$CONTAINER_PATH" docker://j3soon/gaussian_splatting
 else
     echo "Container already exists at $CONTAINER_PATH. Skipping download."
 fi
