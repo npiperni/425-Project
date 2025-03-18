@@ -29,12 +29,12 @@ export SINGULARITY_TMPDIR=/speed-scratch/$USER/singularity_tmp
 mkdir -p $SINGULARITY_CACHEDIR $SINGULARITY_TMPDIR
 
 # Set the path where the container will be stored
-CONTAINER_PATH="/speed-scratch/$USER/3d_gaussian_splatting.sif"
+CONTAINER_PATH="/speed-scratch/$USER/image/3d_gaussian_splatting.sif"
 
 # Check if the container already exists, if not, pull and convert it
 if [ ! -f "$CONTAINER_PATH" ]; then
     echo "Pulling container from Docker Hub..."
-    $SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://gaetanlandreau/3d-gaussian-splatting
+    $SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://j3soon/gaussian_splatting
 else
     echo "Container already exists at $CONTAINER_PATH. Skipping download."
 fi
