@@ -34,7 +34,7 @@ CONTAINER_PATH="/speed-scratch/$USER/3d_gaussian_splatting.sif"
 # Check if the container already exists, if not, pull and convert it
 if [ ! -f "$CONTAINER_PATH" ]; then
     echo "Pulling container from Docker Hub..."
-    $SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://j3soon/gaussian_splatting
+    $SINGULARITY pull --disable-cache "$CONTAINER_PATH" docker://gaetanlandreau/3d-gaussian-splatting
 else
     echo "Container already exists at $CONTAINER_PATH. Skipping download."
 fi
@@ -53,7 +53,7 @@ echo "Singularity will bind mount: $SINGULARITY_BIND for user: $USER"
 # Run the container with GPU support
 time \
 srun $SINGULARITY run --nv --bind $SINGULARITY_BIND "$CONTAINER_PATH" \
-    /usr/bin/python3 -c 'import torch; print(torch.rand(5, 5).cuda()); print("3D Gaussian Splatting Container Running!")'
+    /usr/bin/python3 -c 'import torch; print(torch.cuda.is_available());'
 
 echo "$0 : Gaussian Splatting job completed!"
 date
