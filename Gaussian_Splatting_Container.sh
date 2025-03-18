@@ -12,7 +12,7 @@ echo "$0 : Starting Gaussian Splatting job on Speed..."
 date
 
 REPO_PATH="/speed-scratch/$USER/gaussian_splatting/"
-if [ ! -d $REPO_PATH]; then
+if [ ! -d "$REPO_PATH" ]; then
     mkdir -p $REPO_PATH
     cd $REPO_PATH
     git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive
