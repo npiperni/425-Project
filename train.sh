@@ -16,8 +16,10 @@ SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
 
 $SINGULARITY run --nv \
 --bind /speed-scratch/n_piper/dataset:/mnt/data \
+--bind /speed-scratch/n_piper/output:/workspace/gaussian-splatting/output \
 /speed-scratch/n_piper/3d_gaussian_splatting.sif \
 bash -c "echo 'Doing some setup...' && cd /workspace/gaussian-splatting/ && conda init bash && source ~/.bashrc && conda activate gaussian_splatting && python train.py -s /mnt/data/db/playroom/"
+
 
 
 
