@@ -29,7 +29,7 @@ export SINGULARITY_TMPDIR=/speed-scratch/$USER/singularity_tmp
 mkdir -p $SINGULARITY_CACHEDIR $SINGULARITY_TMPDIR
 
 # Set the path where the container will be stored
-CONTAINER_PATH="/speed-scratch/$USER/image/3d_gaussian_splatting.sif"
+CONTAINER_PATH="/speed-scratch/$USER/3d_gaussian_splatting.sif"
 
 # Check if the container already exists, if not, pull and convert it
 if [ ! -f "$CONTAINER_PATH" ]; then
