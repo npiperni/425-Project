@@ -20,8 +20,8 @@ FOLDER_NAME=$1    # First argument: Video file name
 FOLDER_PATH="/speed-scratch/n_piper/425-Project/data/$FOLDER_NAME"
 
 # Check if the video file exists
-if [ ! -f "$FOLDER_PATH" ]; then
-    echo "ERROR: The video file $FOLDER_PATH does not exist in /speed-scratch/n_piper/425-Project/data/"
+if [ ! -d "$FOLDER_PATH" ]; then
+    echo "ERROR: The folder $FOLDER_PATH does not exist in /speed-scratch/n_piper/425-Project/data/"
     exit 1
 fi
 
