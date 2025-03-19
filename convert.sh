@@ -17,6 +17,15 @@ fi
 VIDEO_FILENAME=$1    # First argument: Video file name
 FRAME_RATE=$2        # Second argument: Frame extraction rate
 
+# Set the video file path
+VIDEO_PATH="/speed-scratch/n_piper/425-Project/data/$VIDEO_FILENAME"
+
+# Check if the video file exists
+if [ ! -f "$VIDEO_PATH" ]; then
+    echo "ERROR: The video file $VIDEO_FILENAME does not exist in /speed-scratch/n_piper/425-Project/data/"
+    exit 1
+fi
+
 # Extract video name without extension
 VIDEO_NAME=$(basename "$VIDEO_FILENAME" | sed 's/\.[^.]*$//')
 
