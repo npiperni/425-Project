@@ -24,8 +24,8 @@ SINGULARITY=/encs/pkg/singularity-3.10.4/root/bin/singularity
 
 $SINGULARITY run --nv \
 --bind $DATASET_FOLDER:/mnt/data \
---bind /speed-scratch/n_piper/output:/workspace/gaussian-splatting/output \
-/speed-scratch/n_piper/3d_gaussian_splatting.sif \
+--bind /speed-scratch/$USER/output:/workspace/gaussian-splatting/output \
+/speed-scratch/$USER/3d_gaussian_splatting.sif \
 bash -c "echo 'Doing some setup...' && cd /workspace/gaussian-splatting/ && conda init bash && source ~/.bashrc && conda activate gaussian_splatting && python train.py -s /mnt/data/"
 
 
