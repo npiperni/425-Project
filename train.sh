@@ -7,7 +7,7 @@
 #SBATCH --gpus=1                             ## Request 1 GPU
 #SBATCH --mem=24G                            ## Assign memory to CPU (this is for system memory)
 #SBATCH --export=ALL                         ## Export all environment variables
-#SBATCH --time=0-12:00:00                     ## job time limit
+#SBATCH --time=0-6:00:00                     ## job time limit
 
 
 # Check if the required arguments are provided
