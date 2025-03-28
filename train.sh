@@ -3,7 +3,7 @@
 #SBATCH --job-name=gaussian_splatting_train   ## Job name
 #SBATCH --mail-type=ALL                      ## Receive all email notifications
 #SBATCH --chdir=./                           ## Use current directory as working directory
-#SBATCH --partition=pg                       ## Use the pg partition (for A100 or V100 GPUs)
+#SBATCH --partition=ps                       ## Use the pg partition (for A100 or V100 GPUs)
 #SBATCH --gpus=1                             ## Request 1 GPU
 #SBATCH --mem=24G                            ## Assign memory to CPU (this is for system memory)
 #SBATCH --export=ALL                         ## Export all environment variables
