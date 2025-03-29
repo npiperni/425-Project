@@ -57,6 +57,16 @@ def evaluate_training(renders_path, gt_path, output_report):
         "SSIM": np.mean(ssim_values),
         "LPIPS": np.mean(lpips_values)
     }
+    results['best_metrics'] = {
+        "PSNR": max(psnr_values),
+        "SSIM": max(ssim_values),
+        "LPIPS": min(lpips_values)
+    }
+    results['worst_metrics'] = {
+        "PSNR": min(psnr_values),
+        "SSIM": min(ssim_values),
+        "LPIPS": max(lpips_values)
+    }
     
     with open(output_report, 'w') as f:
         json.dump(results, f, indent=4)
